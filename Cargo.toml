@@ -1,0 +1,30 @@
+[package]
+name = "constant-string"
+description = "Constant string."
+authors = ["Rust for Web <info@rustforweb.org>"]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/RustForWeb/constant-string"
+version = "0.0.1"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+serde = ["dep:serde"]
+utoipa = ["dep:utoipa"]
+
+[dependencies]
+serde = { version = "1.0.228", features = ["derive"], optional = true }
+utoipa = { version = "5.4.0", optional = true }
+
+[dev-dependencies]
+serde_json = "1.0.149"
+utoipa = { version = "5.4.0", features = ["debug"] }
+
+[lints.rust]
+unsafe_code = "deny"
+
+[lints.clippy]
+panic = "deny"
+unwrap_used = "deny"

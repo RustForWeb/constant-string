@@ -1,0 +1,16 @@
+{
+    "name": "@rustforweb/constant-string",
+    "description": "Constant string.",
+    "author": "Rust for Web <info@rustforweb.org>",
+    "repository": "github:RustForWeb/constant-string",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [],
+    "devDependencies": {
+        "prettier": "^3.8.1"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "packageManager": "npm@11.8.0"
+}
