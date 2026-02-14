@@ -49,8 +49,10 @@ macro_rules! constant_string {
 #[macro_export]
 macro_rules! constant_string_base {
     ($name:ident, $code_name:ident, $code:literal) => {
+        #[doc = concat!("Constant for [`", stringify!($name), "`].")]
         const $code_name: &str = $code;
 
+        #[doc = concat!("Constant string `", stringify!($code), "`.")]
         #[derive(Eq, PartialEq)]
         pub struct $name;
 
