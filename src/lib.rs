@@ -1,12 +1,40 @@
 #![warn(missing_docs)]
 
 //! Constant string with support for [Serde](https://crates.io/crates/serde) and [Utoipa](https://crates.io/crates/utoipa).
+//!
+//! # Example
+//! ```
+//! # extern crate serde;
+//! # extern crate utoipa;
+//! #
+//! use constant_string::constant_string;
+//! use serde::{Deserialize, Serialize};
+//! use utoipa::ToSchema;
+//!
+//! constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
+//!
+//! #[derive(Debug, Default, Deserialize, Serialize, ToSchema)]
+//! struct NotFoundError {
+//!     code: NotFoundErrorCode,
+//! }
+//! ```
+//!
+//! # Features
+//! - `serde` - Implement [`Deserialize`](https://docs.rs/serde/latest/serde/trait.Deserialize.html) and [`Serialize`](https://docs.rs/serde/latest/serde/trait.Serialize.html) traits from [`serde`](https://docs.rs/serde/latest/serde/).
+//! - `utoipa` - Implement [`ToSchema`](https://docs.rs/utoipa/latest/utoipa/trait.ToSchema.html) trait from [`utoipa`](https://docs.rs/utoipa/latest/utoipa/).
 
 #[cfg(feature = "serde")]
 pub mod serde;
 
 #[cfg(all(feature = "serde", feature = "utoipa"))]
 /// Implement a constant string.
+///
+/// # Example
+/// ```
+/// # use constant_string::constant_string;
+/// #
+/// constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
+/// ```
 #[macro_export]
 macro_rules! constant_string {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -18,6 +46,13 @@ macro_rules! constant_string {
 
 #[cfg(all(feature = "serde", not(feature = "utoipa")))]
 /// Implement a constant string.
+///
+/// # Example
+/// ```
+/// # use constant_string::constant_string;
+/// #
+/// constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
+/// ```
 #[macro_export]
 macro_rules! constant_string {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -28,6 +63,13 @@ macro_rules! constant_string {
 
 #[cfg(all(not(feature = "serde"), feature = "utoipa"))]
 /// Implement a constant string.
+///
+/// # Example
+/// ```
+/// # use constant_string::constant_string;
+/// #
+/// constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
+/// ```
 #[macro_export]
 macro_rules! constant_string {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -38,6 +80,13 @@ macro_rules! constant_string {
 
 #[cfg(all(not(feature = "serde"), not(feature = "utoipa")))]
 /// Implement a constant string.
+///
+/// # Example
+/// ```
+/// # use constant_string::constant_string;
+/// #
+/// constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
+/// ```
 #[macro_export]
 macro_rules! constant_string {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -46,6 +95,7 @@ macro_rules! constant_string {
 }
 
 /// Implement a constant string.
+#[doc(hidden)]
 #[macro_export]
 macro_rules! constant_string_base {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -80,6 +130,7 @@ macro_rules! constant_string_base {
 
 /// Implement [`serde`] traits for a constant string.
 #[cfg(feature = "serde")]
+#[doc(hidden)]
 #[macro_export]
 macro_rules! constant_string_serde {
     ($name:ident, $code_name:ident, $code:literal) => {
@@ -107,6 +158,7 @@ macro_rules! constant_string_serde {
 
 /// Implement [`utoipa`] traits for a constant string.
 #[cfg(feature = "utoipa")]
+#[doc(hidden)]
 #[macro_export]
 macro_rules! constant_string_utoipa {
     ($name:ident, $code_name:ident, $code:literal) => {
