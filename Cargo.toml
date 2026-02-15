@@ -5,7 +5,7 @@ authors = ["Rust for Web <info@rustforweb.org>"]
 edition = "2024"
 license = "MIT"
 repository = "https://github.com/RustForWeb/constant-string"
-version = "1.0.0"
+version = "1.0.1"
 
 [package.metadata.docs.rs]
 all-features = true
