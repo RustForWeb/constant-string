@@ -14,7 +14,9 @@
 //! constant_string!(NotFoundErrorCode, NOT_FOUND_ERROR_CODE, "notFound");
 //!
 //! #[derive(Debug, Default, Deserialize, Serialize, ToSchema)]
+//! #[serde(rename_all = "camelCase")]
 //! struct NotFoundError {
+//!     #[schema(inline)]
 //!     code: NotFoundErrorCode,
 //! }
 //! ```
