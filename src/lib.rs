@@ -115,6 +115,7 @@ macro_rules! constant_string_utoipa {
                 ::utoipa::openapi::schema::ObjectBuilder::new()
                     .schema_type(::utoipa::openapi::schema::Type::String)
                     .enum_values(Some([$code_name]))
+                    .examples([$code_name])
                     .build()
                     .into()
             }
@@ -172,6 +173,7 @@ mod tests {
                 Object::builder()
                     .schema_type(Type::String)
                     .enum_values(Some(["constant"]))
+                    .examples(["constant"])
                     .build()
             )),
             Constant::schema()
