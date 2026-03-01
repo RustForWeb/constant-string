@@ -3,6 +3,7 @@ all-features = true
 
 [advisories]
 ignore = []
+yanked = "deny"
 
 [bans]
 allow-wildcard-paths = true
