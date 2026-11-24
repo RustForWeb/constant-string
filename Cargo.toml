@@ -10,6 +10,9 @@ version = "1.0.3"
 [package.metadata.docs.rs]
 all-features = true
 
+[workspace]
+resolver = "3"
+
 [features]
 serde = ["dep:serde"]
 utoipa = ["dep:utoipa"]
@@ -21,6 +24,10 @@ utoipa = { version = "5.4.0", optional = true }
 [dev-dependencies]
 serde_json = "1.0.149"
 utoipa = { version = "5.4.0", features = ["debug"] }
+
+[lints.cargo]
+# False positive for `utoipa`.
+unused_dependencies = "allow"
 
 [lints.rust]
 unsafe_code = "deny"
